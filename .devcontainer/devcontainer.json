@@ -2,7 +2,9 @@
   "name": "Seb's Dev Container",
   "dockerFile": "../Dockerfile",
   "remoteEnv": {},
-  "mounts": [],
+  "mounts": [
+    "type=bind,source=/var/run/docker.sock,target=/var/run/docker-host.sock",
+  ],
   "settings": {
     "[shellscript]": {
       "files.eol": "\n",
