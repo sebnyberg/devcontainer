@@ -1,7 +1,14 @@
 FROM ubuntu:18.04
 
-COPY ./build/ /tmp/scripts/
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-RUN /bin/bash /tmp/scripts/install.sh
+COPY ./build /tmp/build
+COPY ./bin/ /usr/local/bin/
+COPY ./home ./
 
-COPY . .
+RUN /bin/bash /tmp/build/sys-init.sh
+RUN /bin/bash /tmp/build/user-init.sh
+
+USER $USERNAME

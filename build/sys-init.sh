@@ -11,30 +11,6 @@ if [ "$(id -u)" -ne 0 ]; then
   die "Script must be run as root"
 fi
 
-# Validate that USERNAME is set
-[ -z "$USERNAME" ] && die "USERNAME is required (this is a non-root container setup)"
-USER_UID=1000
-USER_GID=$USER_UID
-HOME_DIR="/home/${USERNAME}"
-
-# Exit if USERNAME already exists
-if id -u ${USERNAME} > /dev/null 2>&1; then
-    die "User ${USERNAME} should not exist prior to install.sh execution."
-fi
-
-# Create user and group
-groupadd --gid $USER_GID $USERNAME
-useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
-
-
-
-    # # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
-    # && apt-get update \
-    # && apt-get install -y sudo \
-    # && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    # && chmod 0440 /etc/sudoers.d/$USERNAME
-
-
 # Avoid prompts from apt
 export DEBIAN_FRONTEND=noninteractive
 
@@ -90,4 +66,6 @@ PACKAGE_LIST="apt-utils \
 
 apt-get -y install --no-install-recommends ${PACKAGE_LIST} 
 
-
+# Set Locale
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
+locale-gen

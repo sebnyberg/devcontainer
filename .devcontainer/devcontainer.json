@@ -15,10 +15,10 @@
     "editor.formatOnSave": false,
   },
   "extensions": [],
-  "forwardPorts": [
-    8888
-  ],
+  "forwardPorts": [],
   "postCreateCommand": "",
+  "remoteUser": "vscode",
+  "containerUser": "vscode"
   // "runArgs": [
   //   "--env-file",
   //   ".env",
