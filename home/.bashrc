@@ -54,6 +54,9 @@ fi
 
 # Load Git prompt function (__git_ps1)
 export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=1
 source $HOME/.git-prompt.sh
 
 function kube_info() {
