@@ -11,11 +11,22 @@ if [ "$(id -u)" -ne 0 ]; then
   die "Script must be run as root"
 fi
 
+# Function to call apt-get if needed
+apt-get-update-if-needed()
+{
+    if [ ! -d "/var/lib/apt/lists" ] || [ "$(ls /var/lib/apt/lists/ | wc -l)" = "0" ]; then
+        echo "Running apt-get update..."
+        apt-get update
+    else
+        echo "Skipping apt-get update."
+    fi
+}
+
 # Avoid prompts from apt
 export DEBIAN_FRONTEND=noninteractive
 
 # Install base packages
-apt-get update
+apt-get-update-if-needed
 apt-get -y install --no-install-recommends \
     apt-transport-https \
     apt-utils \
@@ -55,7 +66,7 @@ apt-get -y install --no-install-recommends \
     zlib1g 
 
 # Add Tini
-TINI_VERSION="v0.19.0"
+TINI_VERSION=${TINI_VERSION-"v0.19.0"}
 curl -sSL -o /tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini
 chmod +x /tini
 

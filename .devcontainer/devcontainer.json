@@ -3,7 +3,12 @@
   "dockerFile": "../Dockerfile",
   "remoteEnv": {},
   "mounts": [
+    // Bind host Docker socket so that it can be used inside the Docker container.
+    // host:/var/run/docker.sock -> container:/var/run/docker-host.sock
+    // container:/var/run/docker-host.sock -> container:/var/run/docker.sock
     "type=bind,source=/var/run/docker.sock,target=/var/run/docker-host.sock",
+    // Bind local .kube settings into the running container.
+    "type=bind,source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost",
   ],
   "settings": {
     "[shellscript]": {
@@ -22,9 +27,7 @@
   "remoteUser": "vscode",
   "containerUser": "vscode",
   "overrideCommand": false,
-  "runArgs": [
-    "--init" // make /tini available as an entrypoint
-  ],
+  "runArgs": [],
   // "runArgs": [
   //   "--env-file",
   //   ".env",

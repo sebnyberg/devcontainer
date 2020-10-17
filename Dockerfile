@@ -1,16 +1,20 @@
 FROM ubuntu:18.04
 
 ENV USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+ENV USER_UID=1000
+ENV USER_GID=1000
 
 COPY ./build /tmp/build
-COPY ./bin/ /usr/local/bin/
-COPY ./share /usr/local/share/
-COPY ./home ./
 
-RUN /bin/bash /tmp/build/sys-init.sh
-RUN /bin/bash /tmp/build/user-init.sh
+RUN apt-get update
+RUN /bin/bash /tmp/build/sys.sh
+RUN /bin/bash /tmp/build/user.sh
+RUN /bin/bash /tmp/build/tools.sh
+RUN apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
+
+COPY ./bin /usr/local/bin/
+COPY ./share /usr/local/share/
+COPY ./home /home/${USERNAME}/
 
 USER $USERNAME
 
