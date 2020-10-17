@@ -54,6 +54,11 @@ apt-get -y install --no-install-recommends \
     zip \
     zlib1g 
 
+# Add Tini
+TINI_VERSION="v0.19.0"
+curl -sSL -o /tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini
+chmod +x /tini
+
 # Install Docker
 curl -fsSL https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/gpg | (OUT=$(apt-key add - 2>&1) || echo $OUT)
 echo "deb [arch=amd64] https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list

@@ -20,7 +20,11 @@
   "forwardPorts": [],
   "postCreateCommand": "",
   "remoteUser": "vscode",
-  "containerUser": "vscode"
+  "containerUser": "vscode",
+  "overrideCommand": false,
+  "runArgs": [
+    "--init" // make /tini available as an entrypoint
+  ],
   // "runArgs": [
   //   "--env-file",
   //   ".env",
