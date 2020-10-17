@@ -1,0 +1,26 @@
+{
+  "name": "Seb's Dev Container",
+  "dockerFile": "../Dockerfile",
+  "remoteEnv": {},
+  "mounts": [],
+  "settings": {
+    "[shellscript]": {
+      "files.eol": "\n",
+      "editor.tabSize": 4,
+    },
+    "[python]": {
+      "editor.formatOnSave": true,
+    },
+    "editor.renderIndentGuides": true,
+    "editor.formatOnSave": false,
+  },
+  "extensions": [],
+  "forwardPorts": [
+    8888
+  ],
+  "postCreateCommand": "",
+  // "runArgs": [
+  //   "--env-file",
+  //   ".env",
+  // ],
+}
