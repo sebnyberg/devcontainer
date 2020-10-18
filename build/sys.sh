@@ -70,16 +70,33 @@ TINI_VERSION=${TINI_VERSION-"v0.19.0"}
 curl -sSL -o /tini https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini
 chmod +x /tini
 
-# Install Docker
-curl -fsSL https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/gpg | (OUT=$(apt-key add - 2>&1) || echo $OUT)
-echo "deb [arch=amd64] https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list
-apt-get update
-apt-get -y install --no-install-recommends docker-ce-cli
+######### User setup
+# Validate that USERNAME is set
+[ -z "$USERNAME" ] && die "USERNAME is required (this is a non-root container setup)"
+USER_UID=1000
+USER_GID=$USER_UID
+HOME_DIR="/home/${USERNAME}"
 
-# Install Docker Compose
-LATEST_COMPOSE_VERSION=$(curl -sSL "https://api.github.com/repos/docker/compose/releases/latest" | grep -o -P '(?<="tag_name": ").+(?=")')
-curl -sSL "https://github.com/docker/compose/releases/download/${LATEST_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+# Exit if USERNAME already exists
+if id -u ${USERNAME} > /dev/null 2>&1; then
+    die "User ${USERNAME} should not exist prior to install.sh execution."
+fi
+
+# Create user and group
+groupadd --gid $USER_GID $USERNAME
+useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
+
+# Add add sudo support for non-root user
+echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
+chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Bash setup
+echo "$(cat << EOF
+export USER=\$(whoami)
+
+export PATH=\$PATH:\$HOME/.local/bin
+EOF
+)" >> /etc/bash.bashrc
 
 # Set Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 

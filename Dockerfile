@@ -8,8 +8,9 @@ COPY ./build /tmp/build
 
 RUN apt-get update
 RUN /bin/bash /tmp/build/sys.sh
-RUN /bin/bash /tmp/build/user.sh
-RUN /bin/bash /tmp/build/tools.sh
+RUN /bin/bash /tmp/build/docker.sh
+RUN /bin/bash /tmp/build/azure.sh
+RUN /bin/bash /tmp/build/kubernetes.sh
 RUN apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
 COPY ./bin /usr/local/bin/
