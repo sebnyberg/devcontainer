@@ -1,6 +1,6 @@
 {
   "name": "Seb's Dev Container",
-  "dockerFile": "../Dockerfile",
+  "dockerFile": "Dockerfile",
   "remoteEnv": {},
   "mounts": [
     // Bind host Docker socket so that it can be used inside the Docker container.
@@ -10,7 +10,7 @@
     // Bind local .kube settings into the running container.
     "type=bind,source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost",
     // Azure CLI login.
-    "type=bind,source=${env:HOME}${env:USERPROFILE}/.azure,target=/home/${env:USERNAME}/.azure",
+    "type=bind,source=${env:HOME}/.azure,target=/home/vscode/.azure",
   ],
   "settings": {
     "[shellscript]": {
