@@ -1,4 +1,12 @@
 #!/local/bin/env bash
+#-------------------------------------------------------------------------------------------------------------
+# Copyright (c) Sebastian Nyberg. All rights reserved.
+# Licensed under the MIT License. See LICENSE.
+#-------------------------------------------------------------------------------------------------------------
+#
+# Modified version of:
+# https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/docker-debian.sh
+#
 
 set -o errexit
 set -o pipefail

@@ -1,4 +1,8 @@
 #!/local/bin/env bash
+#-------------------------------------------------------------------------------------------------------------
+# Copyright (c) Sebastian Nyberg. All rights reserved.
+# Licensed under the MIT License. See LICENSE.
+#-------------------------------------------------------------------------------------------------------------
 
 set -o errexit
 set -o pipefail

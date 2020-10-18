@@ -1,4 +1,8 @@
 #!/local/bin/env bash
+#-------------------------------------------------------------------------------------------------------------
+# Copyright (c) Sebastian Nyberg. All rights reserved.
+# Licensed under the MIT License. See LICENSE.
+#-------------------------------------------------------------------------------------------------------------
 
 set -o errexit
 set -o pipefail
@@ -6,7 +10,6 @@ set -o pipefail
 # Complain to STDERR and exit with an error.
 die() { echo "$*" >&2; exit 2; }  
 
-# Validation
 if [ "$(id -u)" -ne 0 ]; then
   die "Script must be run as root"
 fi

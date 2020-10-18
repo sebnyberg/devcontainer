@@ -35,4 +35,11 @@ if [ -d "/usr/local/share/kube-localhost" ]; then
     kube-init
 fi
 
+azure-init() {
+    az login
+}
+if type az &>/dev/null && ! az account show &>/dev/null ; then
+    azure-init
+fi
+
 /tini -- "$@"
