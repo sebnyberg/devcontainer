@@ -9,6 +9,8 @@
     "type=bind,source=/var/run/docker.sock,target=/var/run/docker-host.sock",
     // Bind local .kube settings into the running container.
     "type=bind,source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost",
+    // Azure CLI login.
+    "type=bind,source=${env:HOME}${env:USERPROFILE}/.azure,target=/home/${env:USERNAME}/.azure",
   ],
   "settings": {
     "[shellscript]": {

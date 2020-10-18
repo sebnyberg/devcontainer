@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
+# Copyright (c) Sebastian Nyberg. All rights reserved.
+# Licensed under the MIT License.
 #-------------------------------------------------------------------------------------------------------------
 #
-# Docs: https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/docs/azcli.md
+# Syntax: ./azure.sh
 #
-# Syntax: ./azcli-debian.sh
-#
-# Retrieved from: https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/azcli-debian.sh
+# Based on: https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/azcli-debian.sh
 
 set -e
 
@@ -33,3 +31,14 @@ curl -sL https://packages.microsoft.com/keys/microsoft.asc | (OUT=$(apt-key add 
 apt-get update
 apt-get install -y azure-cli
 echo "Done!"
+
+# echo "$(cat << EOM
+# # Azure
+# if type az &>/dev/null && ! az account show &>/dev/null; then
+#     az login
+#     az acr login -n sisrp &>/dev/null
+#     az acr login -n sisrisk &>/dev/null
+#     az acr login -n insights &>/dev/null
+# fi
+# EOM
+# )" >> /etc/bash.bashrc
