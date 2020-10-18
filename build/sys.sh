@@ -30,6 +30,7 @@ apt-get-update-if-needed
 apt-get -y install --no-install-recommends \
     apt-transport-https \
     apt-utils \
+    bash-completion \
     ca-certificates \
     curl \
     dialog \
@@ -57,9 +58,9 @@ apt-get -y install --no-install-recommends \
     procps \
     psmisc \
     rsync \
-    socat \
     sudo \
     unzip \
+    vim \
     vim-tiny \
     wget \
     zip \

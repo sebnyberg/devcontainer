@@ -19,7 +19,7 @@ docker-init() {
         | tee -a ${SOCAT_LOG} > /dev/null & echo "$!"\
         | tee ${SOCAT_PID} > /dev/null
 }
-if [ -f "/var/run/docker-host.sock" ] && [ command -v docker &>/dev/null ] ; then
+if [ -e "/var/run/docker-host.sock" ] && [ $(command -v docker) ] ; then
     docker-init
 fi
 

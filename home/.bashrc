@@ -112,8 +112,3 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval `ssh-agent -s`
     ssh-add
 fi
-
-# Load auto completion for kubectl
-if command -v kubectl &>/dev/null ; then
-  source <(kubectl completion bash)
-fi
