@@ -62,7 +62,7 @@ fi
 
 # SOPS
 if type sops > /dev/null 2>&1; then
-    echo "Helm already installed."
+    echo "SOPS already installed."
 else
     cd $(mktemp -d) 
     curl -sSL -o ${BINPATH}/sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux
