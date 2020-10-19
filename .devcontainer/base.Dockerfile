@@ -18,7 +18,7 @@ RUN apt-get update  \
   # Cleanup
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/
 
-# Add Predictable paths
+# Paths for Python and Go
 ENV PATH=${PATH}:/usr/local/py-utils/bin
 ENV PATH=${PATH}:/usr/local/py-utils/venv/poetry/bin
 ENV PATH=${PATH}:/go/bin
