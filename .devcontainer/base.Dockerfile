@@ -6,7 +6,7 @@ RUN apt-get update  \
   # Install base system-level packages (apt)
   && /bin/bash /tmp/scripts/sys.sh \
   # Install Docker, Docker Compose, and prep for mounting the host socket 
-  && bin/bash /tmp/scripts/docker.sh \ 
+  && bin/bash /tmp/scripts/docker.sh \
   # Install Azure CLI, should pair with a mount of ~/.azure to avoid double login
   && /bin/bash /tmp/scripts/azure.sh \
   # Install Kubernetes tools
@@ -17,6 +17,11 @@ RUN apt-get update  \
   && /bin/bash /tmp/scripts/python.sh \
   # Cleanup
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/
+
+# Add Predictable paths
+ENV PATH=${PATH}:/usr/local/py-utils/bin
+ENV PATH=${PATH}:/usr/local/py-utils/venv/poetry/bin
+ENV PATH=${PATH}:/go/bin
 
 COPY ./entrypoint.sh /usr/local/share/entrypoint.sh
 ENTRYPOINT ["/usr/local/share/entrypoint.sh"]

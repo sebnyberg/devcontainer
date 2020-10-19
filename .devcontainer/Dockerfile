@@ -18,11 +18,15 @@ RUN apt-get update  \
   # Cleanup
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/
 
+# Paths for Python and Go
+ENV PATH=${PATH}:/usr/local/py-utils/bin
+ENV PATH=${PATH}:/usr/local/py-utils/venv/poetry/bin
+ENV PATH=${PATH}:/go/bin
+
 # Usually managed by the project's own Dockerfile
 ENV USERNAME=vscode
 ENV USER_UID=1000
 ENV USER_GID=1000
-ENV PATH=${PATH}:/usr/local/py-utils/bin:/go/bin
 
 # Create user and group
 RUN groupadd --gid $USER_GID $USERNAME \
