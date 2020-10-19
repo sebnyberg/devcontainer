@@ -1,4 +1,4 @@
-#!/local/bin/env bash
+#!/usr/bin/env bash
 #-------------------------------------------------------------------------------------------------------------
 # Copyright (c) Sebastian Nyberg. All rights reserved.
 # Licensed under the MIT License. See LICENSE.

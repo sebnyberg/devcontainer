@@ -21,7 +21,7 @@ ENV USER_UID=1000
 ENV USER_GID=1000
 
 # Add basic .bashrc with colourful prompt
-RUN /bin/bash /tmp/scripts/user.sh \
+RUN /bin/bash /tmp/scripts/create-user.sh \
   && curl -sSL -o /home/${USERNAME}/.bashrc \
   https://gist.githubusercontent.com/sebnyberg/3d3f55588f70c897a2c8c7306e5fd3ea/raw/4f2582751f0bee60d4a8789a6a04aaadbed238e7/.bashrc \
   # When using Python, use FROM python:$ver rather than ubuntu
