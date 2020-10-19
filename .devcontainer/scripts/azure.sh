@@ -6,7 +6,8 @@
 #
 # Syntax: ./azure.sh
 #
-# Based on: https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/azcli-debian.sh
+# Simplified and opinionated version of:
+# https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/azcli-debian.sh
 
 set -e
 

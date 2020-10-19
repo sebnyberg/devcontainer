@@ -4,7 +4,7 @@
 # Licensed under the MIT License. See LICENSE.
 #-------------------------------------------------------------------------------------------------------------
 #
-# Modified version of:
+# Simplified and opinionated version of:
 # https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/docker-debian.sh
 #
 
@@ -62,10 +62,4 @@ else
     chmod +x /usr/local/bin/docker-compose
     sudo curl -sSL https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/bash/docker-compose \
         -o /etc/bash_completion.d/docker-compose
-fi
-
-# Install socat
-if ! dpkg -s socat > /dev/null 2>&1; then
-    apt-get-update-if-needed
-    apt-get -y install socat
 fi

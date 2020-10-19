@@ -4,7 +4,8 @@
 # Licensed under the MIT License. See LICENSE.
 #-------------------------------------------------------------------------------------------------------------
 #
-# Based on https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/go-debian.sh
+# Simplified and opinionated version of:
+# https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/go-debian.sh
 # 
 
 GO_VERSION=${GO_VERSION:-"1.15.3"}

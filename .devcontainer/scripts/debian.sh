@@ -7,6 +7,8 @@
 set -o errexit
 set -o pipefail
 
+INIT_RC=${INIT_RC-"true"}
+
 # Complain to STDERR and exit with an error.
 die() { echo "$*" >&2; exit 2; }  
 
@@ -81,6 +83,11 @@ export USER=\$(whoami)
 export PATH=\$PATH:\$HOME/.local/bin
 EOF
 )" >> /etc/bash.bashrc
+
+# Basic .bashrc with prompt etc
+if [ "${INIT_RC}" = "true" ]; then
+    curl https://gist.githubusercontent.com/sebnyberg/3d3f55588f70c897a2c8c7306e5fd3ea/raw/4f2582751f0bee60d4a8789a6a04aaadbed238e7/.bashrc | tee -a /etc/bash.bashrc
+fi
 
 # Set Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
