@@ -1,9 +1,5 @@
 FROM python:3.8.6-buster
 
-ENV USERNAME=vscode
-ENV USER_UID=1000
-ENV USER_GID=1000
-
 COPY ./scripts /tmp/scripts
 
 RUN apt-get update \
@@ -15,16 +11,22 @@ RUN apt-get update \
   && /bin/bash /tmp/scripts/azure.sh \
   # Install Kubernetes tools
   && /bin/bash /tmp/scripts/kubernetes.sh \
-  # When using Python, use FROM python:$ver rather than ubuntu
-  && /bin/bash /tmp/scripts/python.sh \
   # Install Go and various dev tools
   && /bin/bash /tmp/scripts/go.sh \
-  # Add basic .bashrc with colourful prompt
+  # Cleanup
+  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* 
+
+ENV USERNAME=vscode
+ENV USER_UID=1000
+ENV USER_GID=1000
+
+# Add basic .bashrc with colourful prompt
+RUN /bin/bash /tmp/scripts/user.sh \
   && curl -sSL -o /home/${USERNAME}/.bashrc \
   https://gist.githubusercontent.com/sebnyberg/3d3f55588f70c897a2c8c7306e5fd3ea/raw/4f2582751f0bee60d4a8789a6a04aaadbed238e7/.bashrc \
-  # Cleanup
-  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/scripts
-
+  # When using Python, use FROM python:$ver rather than ubuntu
+  && /bin/bash /tmp/scripts/python.sh  \
+  && chown -R $USERNAME /go
 
 USER $USERNAME
 

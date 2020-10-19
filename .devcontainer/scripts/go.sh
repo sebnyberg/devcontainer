@@ -81,7 +81,6 @@ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/insta
 mv /tmp/gotools/bin/* ${TARGET_GOPATH}/bin/
 mv gocode-gomod ${TARGET_GOPATH}/bin/
 rm -rf /tmp/gotools
-chown -R ${USERNAME} "${TARGET_GOPATH}"
 
 # Set paths for binaries
 echo "$(cat << EOM

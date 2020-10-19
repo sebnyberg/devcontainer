@@ -31,14 +31,3 @@ curl -sL https://packages.microsoft.com/keys/microsoft.asc | (OUT=$(apt-key add 
 apt-get update
 apt-get install -y azure-cli
 echo "Done!"
-
-# echo "$(cat << EOM
-# # Azure
-# if type az &>/dev/null && ! az account show &>/dev/null; then
-#     az login
-#     az acr login -n sisrp &>/dev/null
-#     az acr login -n sisrisk &>/dev/null
-#     az acr login -n insights &>/dev/null
-# fi
-# EOM
-# )" >> /etc/bash.bashrc

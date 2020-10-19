@@ -24,7 +24,9 @@
     "editor.formatOnSave": false,
   },
   "extensions": [],
-  "forwardPorts": [],
+  "forwardPorts": [
+    8888
+  ],
   "postCreateCommand": "",
   "remoteUser": "vscode",
   "containerUser": "vscode",

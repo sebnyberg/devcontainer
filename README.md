@@ -10,4 +10,3 @@ git clone --depth 1 --branch=master https://github.com/sebnyberg/devcontainer $t
 cp -r $tmpdir/.devcontainer .
 rm -rf $tmpdir
 ```
-
