@@ -14,7 +14,7 @@ set -o pipefail
 # Complain to STDERR and exit with an error.
 die() { echo "$*" >&2; exit 2; }  
 
-BINPATH="${BINPATH-"/usr/local/bin"}"
+BINPATH=${BINPATH-"/usr/local/bin"}
 PIPX_HOME=${PIPX_HOME-"/usr/local/py-utils"}
 PIPX_BIN_DIR=${PIPX_HOME}/bin
 PATH=${PIPX_BIN_DIR}:${PATH}
@@ -24,6 +24,8 @@ if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
     exit 1
 fi
+
+USERNAME=${USERNAME-"root"}
 
 set -o nounset
 
