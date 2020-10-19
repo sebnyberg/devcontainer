@@ -17,8 +17,8 @@ die() { echo "$*" >&2; exit 2; }
 BINPATH="${BINPATH-"/usr/local/bin"}"
 PIPX_HOME=${PIPX_HOME-"/usr/local/py-utils"}
 PIPX_BIN_DIR=${PIPX_HOME}/bin
-export PATH=${PIPX_BIN_DIR}:${PATH}
-POETRY_VERSION=1.1.2
+PATH=${PIPX_BIN_DIR}:${PATH}
+POETRY_VERSION=${POETRY_VERSION-"1.1.2"}
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'

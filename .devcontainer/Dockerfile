@@ -19,6 +19,7 @@ RUN apt-get update \
 ENV USERNAME=vscode
 ENV USER_UID=1000
 ENV USER_GID=1000
+ENV PATH=${PATH}:/usr/local/py-utils/bin:/go/bin
 
 # Add basic .bashrc with colourful prompt
 RUN /bin/bash /tmp/scripts/create-user.sh \
