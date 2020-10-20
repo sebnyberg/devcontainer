@@ -81,6 +81,9 @@ c.NotebookApp.ip = '0.0.0.0'
 
 # allow root when starting jupyter notebook
 c.NotebookApp.allow_root = True
+
+# don't open a new browser window automatically
+c.NotebookApp.open_browser = False
 EOM
 )" > /root/.jupyter/jupyter_notebook_config.py
 
