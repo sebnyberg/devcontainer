@@ -36,10 +36,12 @@ python3 -m pip install --no-cache-dir --upgrade pip
 
 # Add environment variables to bashrc
 echo "$(cat << EOM
+
 # pipx settings
 export PIPX_HOME=${PIPX_HOME}
 export PIPX_BIN_DIR=${PIPX_BIN_DIR}
 export PATH=\$PATH:\${PIPX_BIN_DIR}
+
 EOM
 )" >> /etc/bash.bashrc
 
@@ -72,6 +74,7 @@ echo "${PYTHON_UTILS}" | xargs -n 1 /tmp/pip-tmp/bin/pipx install --system-site-
 rm -rf /tmp/pip-tmp
 
 echo "$(cat << EOM
+
 # Pipx paths
 export PIPX_HOME=${PIPX_HOME}
 export PIPX_BIN_DIR=${PIPX_BIN_DIR}

@@ -31,9 +31,12 @@ else
     echo "source <(kubectl completion bash)" >> /etc/bash.bashrc
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases > /usr/local/share/kubectl-aliases.sh
     echo "$(cat << EOM
+
+# Kubectl
 source /usr/local/share/kubectl-aliases.sh
 alias kns='kubectl config set-context --current --namespace '
 alias kc='kubectl config use-context '
+
 EOM
 )" >> /etc/bash.bashrc
 fi
@@ -113,6 +116,7 @@ else
         https://github.com/fluxcd/flux/releases/download/${FLUXCTL_VERSION}/fluxctl_linux_amd64
     chmod +x ${BINPATH}/fluxctl
     echo "$(cat << EOM
+
 source <(fluxctl completion bash)
 export FLUX_FORWARD_NAMESPACE=flux
 alias fc="fluxctl"
@@ -130,6 +134,7 @@ else
     echo "$(cat << EOM
 export SEALED_SECRETS_CONTROLLER_NAMESPACE=adm
 alias seal="kubeseal"
+
 EOM
 )" >> /etc/bash.bashrc
 fi

@@ -86,8 +86,10 @@ EOF
 
 # Basic .bashrc with prompt etc
 if [ "${INIT_RC}" = "true" ]; then
+    echo "" >> /etc/bash.bashrc
     curl https://gist.githubusercontent.com/sebnyberg/3d3f55588f70c897a2c8c7306e5fd3ea/raw/7576457445d96a87d91568261ae348caa308750f/.bashrc \
         | tee -a /etc/bash.bashrc
+    echo "" >> /etc/bash.bashrc
 fi
 
 # Set Locale
