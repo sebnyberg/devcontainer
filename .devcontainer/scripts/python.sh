@@ -76,6 +76,8 @@ echo "$(cat << EOM
 export PIPX_HOME=${PIPX_HOME}
 export PIPX_BIN_DIR=${PIPX_BIN_DIR}
 export PATH=\${PATH}:\${PIPX_BIN_DIR}
+# Suppress annoying pip upgrade message
+export PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Python autocompletion
 eval "\$(register-python-argcomplete pipx)"
