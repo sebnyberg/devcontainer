@@ -73,6 +73,17 @@ echo "${PYTHON_UTILS}" | xargs -n 1 /tmp/pip-tmp/bin/pipx install --system-site-
 /tmp/pip-tmp/bin/pipx install --system-site-packages --pip-args '--no-cache-dir --force-reinstall' jupyter --include-deps
 rm -rf /tmp/pip-tmp
 
+# Set up jupyter stub
+mkdir -p /root/.jupyter
+echo "$(cat << EOM
+# localhost does not work inside a container - use 0.0.0.0 instead
+c.NotebookApp.ip = '0.0.0.0'
+
+# allow root when starting jupyter notebook
+c.NotebookApp.allow_root = True
+EOM
+)" > /root/.jupyter/jupyter_notebook_config.py
+
 echo "$(cat << EOM
 
 # Pipx paths
