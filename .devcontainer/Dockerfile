@@ -2,8 +2,6 @@ FROM python:3.8.6-buster
 
 COPY ./scripts /tmp/scripts
 
-ENV INSIDE_CONTAINER=true
-
 RUN apt-get update  \
   # Install base system-level packages (apt)
   && /bin/bash /tmp/scripts/debian.sh \
