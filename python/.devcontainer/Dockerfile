@@ -11,8 +11,6 @@ RUN apt-get update  \
   && /bin/bash /tmp/scripts/azure.sh \
   # Install Kubernetes tools
   && /bin/bash /tmp/scripts/kubernetes.sh \
-  # Install Go and various dev tools
-  && /bin/bash /tmp/scripts/go.sh \
   # Install Python (needs chown -R /usr/local/py-utils for user build)
   && /bin/bash /tmp/scripts/python.sh \
   # Cleanup
@@ -20,7 +18,6 @@ RUN apt-get update  \
 
 # Paths for Python and Go
 ENV PATH=${PATH}:/usr/local/py-utils/bin
-ENV PATH=${PATH}:/go/bin
 
 COPY ./entrypoint.sh /usr/local/share/entrypoint.sh
 ENTRYPOINT ["/usr/local/share/entrypoint.sh"]
