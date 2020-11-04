@@ -58,6 +58,7 @@ DEFAULT_UTILS="\
     pylint \
     pytest \
     virtualenv \
+    wheel \
     "
 
 PYTHON_UTILS=${PYTHON_UTILS-$DEFAULT_UTILS}
